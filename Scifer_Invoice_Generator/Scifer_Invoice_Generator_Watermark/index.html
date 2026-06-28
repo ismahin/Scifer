@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Scifer branded invoice generator" />
+  <title>Scifer Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="editor-panel" aria-label="Invoice editor">
+      <div class="editor-brand">
+        <div class="mini-logo" aria-hidden="true">
+          <img src="assets/icon_color.png" alt="" />
+          <img src="assets/text_color.png" alt="Scifer" />
+        </div>
+        <p>Invoice Generator</p>
+      </div>
+
+      <div class="editor-scroll">
+        <section class="form-section">
+          <div class="section-heading"><span>Invoice details</span></div>
+          <div class="field-grid two-columns">
+            <label>Invoice no.
+              <input id="invoiceNo" type="text" value="INV-0001" placeholder="INV-0001" />
+            </label>
+            <label>Currency
+              <select id="currency">
+                <option value="BDT">BDT (৳)</option>
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+              </select>
+            </label>
+          </div>
+          <label>Invoice date
+            <input id="invoiceDate" type="date" />
+          </label>
+        </section>
+
+        <section class="form-section">
+          <div class="section-heading"><span>Bill to</span></div>
+          <label>Customer / company name
+            <input id="customerName" type="text" placeholder="Customer / Company Name" />
+          </label>
+          <label>Customer address
+            <input id="customerAddress" type="text" placeholder="Street, area, city, country" />
+          </label>
+          <label>Phone / email
+            <input id="customerContact" type="text" placeholder="Phone / Email" />
+          </label>
+        </section>
+
+        <section class="form-section">
+          <div class="section-heading"><span>Products / services</span></div>
+          <div id="itemsEditor" class="items-editor" aria-live="polite"></div>
+          <button id="addItemButton" class="secondary-btn full-width" type="button">+ Add item</button>
+        </section>
+
+        <section class="form-section">
+          <div class="section-heading"><span>Payment &amp; totals</span></div>
+          <div class="field-grid two-columns">
+            <label>Discount
+              <input id="discount" type="number" min="0" step="0.01" value="0" />
+            </label>
+            <label>Tax / VAT (%)
+              <input id="taxRate" type="number" min="0" step="0.01" value="0" />
+            </label>
+          </div>
+          <div class="field-grid two-columns">
+            <label>Payment status
+              <select id="paymentStatus">
+                <option value="unpaid">Unpaid</option>
+                <option value="partial">Partially paid</option>
+                <option value="paid">Paid in full</option>
+              </select>
+            </label>
+            <label>Paid amount
+              <input id="paidAmount" type="number" min="0" step="0.01" value="0" placeholder="0.00" />
+            </label>
+          </div>
+          <p class="payment-help">Paid amount is deducted automatically from the grand total to calculate the balance due.</p>
+          <label>Payment method
+            <input id="paymentMethod" type="text" value="Cash / Bank Transfer / Mobile Financial Service" />
+          </label>
+          <label>Terms &amp; conditions
+            <textarea id="notes" rows="7">Electronic products are supplied with the applicable manufacturer or supplier warranty. Warranty excludes misuse, liquid damage, power surges, unauthorised repair, and normal wear. Rental items remain Scifer property; the customer is responsible for safe use, loss, theft, damage, late return, and related charges. Services, installation, and support are limited to the agreed scope; approved extra work and materials are billed separately. Returns require prior approval and inspection. Payment is due upon receipt unless agreed otherwise in writing.</textarea>
+          </label>
+        </section>
+      </div>
+
+      <div class="editor-actions">
+        <div class="export-actions">
+          <button id="downloadPdfButton" class="primary-btn pdf-btn" type="button">Save as PDF</button>
+          <button id="printButton" class="secondary-btn print-btn" type="button">Print Invoice</button>
+        </div>
+        <p class="export-help">Save as PDF downloads a fixed A4 file. Print Invoice opens your printer settings.</p>
+        <div class="secondary-actions">
+          <button id="saveButton" class="text-btn" type="button">Save draft</button>
+          <button id="newButton" class="text-btn" type="button">New invoice</button>
+        </div>
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+      </div>
+    </aside>
+
+    <main class="preview-shell">
+      <div class="preview-toolbar">
+        <span>Live A4 invoice preview</span>
+        <span class="preview-note">A4 aligned PDF download · Separate printer option</span>
+      </div>
+
+      <article class="invoice-paper" id="invoicePaper" aria-label="Scifer invoice preview">
+        <div class="invoice-content">
+          <img class="invoice-watermark" src="assets/watermark.png" alt="" aria-hidden="true" />
+          <header class="invoice-header">
+            <div class="company-lockup">
+              <div class="logo-row">
+                <img class="invoice-icon" src="assets/icon_color.png" alt="Scifer logo icon" />
+                <img class="invoice-wordmark" src="assets/text_color.png" alt="Scifer" />
+              </div>
+              <p>Future-Ready Tech Solutions</p>
+            </div>
+            <div class="invoice-title-block">
+              <h1>INVOICE</h1>
+              <p>Professional Services &amp; Technology Solutions</p>
+            </div>
+          </header>
+
+          <div class="brand-rule" aria-hidden="true"></div>
+
+          <section class="top-details">
+            <div class="bill-to-box">
+              <h2>BILL TO</h2>
+              <p id="previewCustomerName" class="customer-name placeholder">[Customer / Company Name]</p>
+              <p id="previewCustomerAddress" class="placeholder">[Customer address]</p>
+              <p id="previewCustomerContact" class="placeholder">[Phone / Email]</p>
+            </div>
+            <dl class="meta-box">
+              <div><dt>Invoice No.</dt><dd id="previewInvoiceNo">INV-0001</dd></div>
+              <div><dt>Invoice Date</dt><dd id="previewInvoiceDate">[DD MMM YYYY]</dd></div>
+            </dl>
+          </section>
+
+          <section class="line-items-section">
+            <table class="items-table" aria-label="Invoice items">
+              <colgroup>
+                <col class="number-col" />
+                <col class="description-col" />
+                <col class="quantity-col" />
+                <col class="price-col" />
+                <col class="amount-col" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Description of Products / Services</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody id="itemsPreview"></tbody>
+            </table>
+          </section>
+
+          <section class="summary-section">
+            <div class="notes-box">
+              <h2>TERMS &amp; CONDITIONS</h2>
+              <p id="previewNotes">Electronic products are supplied with the applicable manufacturer or supplier warranty. Warranty excludes misuse, liquid damage, power surges, unauthorised repair, and normal wear. Rental items remain Scifer property; the customer is responsible for safe use, loss, theft, damage, late return, and related charges. Services, installation, and support are limited to the agreed scope; approved extra work and materials are billed separately. Returns require prior approval and inspection. Payment is due upon receipt unless agreed otherwise in writing.</p>
+            </div>
+            <table class="totals-table" aria-label="Invoice totals">
+              <tbody>
+                <tr><th>Subtotal</th><td id="subtotalValue">৳0.00</td></tr>
+                <tr><th>Discount</th><td id="discountValue">৳0.00</td></tr>
+                <tr><th>Tax / VAT</th><td id="taxValue">৳0.00</td></tr>
+                <tr class="grand-total"><th>Grand Total</th><td id="grandTotalValue">৳0.00</td></tr>
+                <tr class="paid-row"><th>Paid Amount</th><td id="paidValue">৳0.00</td></tr>
+                <tr class="balance-due" id="balanceRow"><th id="balanceLabel">BALANCE DUE</th><td id="balanceValue">৳0.00</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="payment-signature">
+            <p>Payment Method: <span id="previewPaymentMethod">Cash / Bank Transfer / Mobile Financial Service</span></p>
+            <div class="signature-area">
+              <div class="signature-line"></div>
+              <p>Authorized Signature</p>
+            </div>
+          </section>
+
+          <footer class="invoice-footer">
+            <p class="footer-address"><span>Office:</span> <strong>26 Shakhari Nagar Lane, Gendaria, Dhaka, Bangladesh</strong></p>
+            <div class="footer-contact-row">
+              <p><span>Mobile:</span> <strong>01410009901</strong></p>
+              <p><span>Email:</span> <strong>tscifer@gmail.com</strong></p>
+              <p><span>Website:</span> <strong>scifer.dev</strong></p>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="pdf-generator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

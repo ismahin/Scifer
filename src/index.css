@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f7f9fb;
+  --color-surface-dim: #d8dadc;
+  --color-surface-bright: #f7f9fb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f4f6;
+  --color-surface-container: #eceef0;
+  --color-surface-container-high: #e6e8ea;
+  --color-surface-container-highest: #e0e3e5;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #434656;
+  --color-inverse-surface: #2d3133;
+  --color-inverse-on-surface: #eff1f3;
+  --color-outline: #747688;
+  --color-outline-variant: #c4c5d9;
+  --color-surface-tint: #104af0;
+  --color-primary: #0040df;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #2d5bff;
+  --color-on-primary-container: #efefff;
+  --color-inverse-primary: #b8c3ff;
+  --color-secondary: #00677f;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #00d2ff;
+  --color-on-secondary-container: #00566a;
+  --color-tertiary: #580df6;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #7147ff;
+  --color-on-tertiary-container: #f4edff;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #dde1ff;
+  --color-primary-fixed-dim: #b8c3ff;
+  --color-on-primary-fixed: #001355;
+  --color-on-primary-fixed-variant: #0035bd;
+  --color-secondary-fixed: #b6ebff;
+  --color-secondary-fixed-dim: #47d6ff;
+  --color-on-secondary-fixed: #001f28;
+  --color-on-secondary-fixed-variant: #004e60;
+  --color-tertiary-fixed: #e6deff;
+  --color-tertiary-fixed-dim: #cbbeff;
+  --color-on-tertiary-fixed: #1d0061;
+  --color-on-tertiary-fixed-variant: #4900d5;
+  --color-background: #f7f9fb;
+  --color-on-background: #191c1e;
+  --color-surface-variant: #e0e3e5;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+  
+  --radius-xl: 1.5rem;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap');
+
+  body {
+    @apply bg-background text-on-surface font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 border border-white/20 backdrop-blur-[20px] transition-all duration-500 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+
+  .chromatic-glow-primary {
+    @apply hover:shadow-[0_20px_40px_rgba(45,91,255,0.15)];
+  }
+
+  .chromatic-glow-tertiary {
+    @apply hover:shadow-[0_20px_40px_rgba(88,13,246,0.15)];
+  }
+
+  .hero-gradient {
+    position: relative;
+    background: #f7f9fb;
+    overflow: hidden;
+  }
+
+  .hero-mesh {
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(0, 64, 223, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(88, 13, 246, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.03) 0%, transparent 50%);
+    animation: mesh-move 18s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes mesh-move {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5%, 5%) rotate(2deg); }
+    100% { transform: translate(-5%, 10%) rotate(-2deg); }
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-secondary-container;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-gradient-to-r from-primary to-secondary-container text-on-primary font-manrope font-semibold px-8 py-3 rounded-full transition-all duration-300;
+    box-shadow: 0 8px 30px rgba(45, 91, 255, 0.2);
+  }
+
+  .btn-primary:hover {
+    @apply scale-[1.02];
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.4), 0 0 50px rgba(88, 13, 246, 0.2);
+  }
+
+  .wave-line {
+    @apply absolute bottom-0 left-0 w-full h-[2px] opacity-10;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-outline-variant text-on-surface font-manrope font-semibold px-8 py-3 rounded-full hover:bg-surface-container-low transition-all duration-300;
+  }
+}
