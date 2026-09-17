@@ -1,0 +1,126 @@
+/* The existing editorial identity, choreographed on a shared twelve-column stage. */
+.scifer-energy-field { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+.scifer-energy-field > div { pointer-events: none !important; }
+.energy-unavailable .understanding-section { background: #050608; }
+.graphics-fallback { position: fixed; bottom: 12px; left: 12px; z-index: 10; padding: 10px 16px; background: #fff; border: 1px solid #dce7f3; color: #475467; font-size: 11px; }
+.editorial-story { isolation: auto; overflow: clip; }
+.editorial-story .webgl-area { overflow: clip; }
+.editorial-story .hero-line { overflow: clip; }
+.editorial-story .chapter-copy, .editorial-story .hero-bottom, .editorial-story .hero-meta { z-index: 4; }
+.editorial-story #intelligence { min-height: 150svh; }
+.editorial-story #data { min-height: 125svh; }
+.understanding-section { position: relative; height: 300svh; z-index: 3; pointer-events: none; }
+.understanding-stage { position: sticky; top: 0; height: 100svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-content: center; color: #f8fbff; overflow: hidden; }
+.understanding-copy { grid-column: 2 / 12; padding-bottom: 5vh; }
+.understanding-copy > .micro-label { color: #adbed2; display: block; margin-bottom: 4vh; }
+.understanding-copy h2 { font-size: clamp(4rem, 8.8vw, 10rem); line-height: .99; font-weight: 500; letter-spacing: -.068em; margin: 0; }
+.understanding-copy h2 span { color: inherit; }
+.understanding-copy h2 .line-3 { color: #70b8ff; }
+.understanding-line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.025em; }
+.understanding-line > span { display: block; will-change: transform; }
+.understanding-line.line-3 { color: #70b8ff; font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: -.055em; }
+.understanding-note { position: absolute; max-width: 220px; border-top: 1px solid #54738c66; padding-top: 14px; opacity: 0; }
+.understanding-note > span { font: 9px 'IBM Plex Mono', monospace; letter-spacing: .14em; color: #89bdf1; }
+.understanding-note > span::before { content: ''; display: inline-block; width: 4px; height: 4px; margin-right: 9px; background: #70b8ff; }
+.understanding-note p { color: #d2dfec; font-size: 13px; margin-top: 10px; }
+.understanding-note.perception { bottom: 9%; left: 7%; }
+.understanding-note.reasoning { top: 27%; right: 5%; }
+.understanding-note.adaptation { bottom: 9%; right: 13%; }
+.understanding-bottom { position: absolute; bottom: 3%; left: 7%; color: #98aabc; font-size: 8px; }
+html[data-energy-dark='true'] .site-header { background: rgba(10, 17, 28, .74); border-color: #7899bd30; color: #f8fbff; }
+html[data-energy-dark='true'] header.site-header.editorial-header.is-scrolled { background: rgba(10,17,28,.91); }
+html[data-energy-dark='true'] .site-header .brand > span { color: #f8fbff; }
+html[data-energy-dark='true'] .site-header a, html[data-energy-dark='true'] .site-header button, html[data-energy-dark='true'] .site-header .brand { color: #f8fbff; }
+.energy-technology { height: 350svh; min-height: 0; padding: 0; position: relative; z-index: 3; background: transparent; pointer-events: none; overflow: visible; }
+.technology-stage { height: 100svh; position: sticky; top: 0; padding-top: 12vh; padding-bottom: 7vh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-content: start; overflow: hidden; }
+.energy-technology .exhibition-heading { grid-column: 1 / 7; display: block; padding: 0; border: 0; }
+.energy-technology .exhibition-heading h2 { font-size: clamp(38px, 5vw, 76px); line-height: 1.02; font-weight: 500; letter-spacing: -.055em; margin: 25px 0 35px; }
+.energy-technology .exhibition-heading em { color: #1268e8; font-family: Georgia, serif; font-weight: 400; }
+.energy-technology .technology-tabs { grid-column: 1 / 6; padding: 0; display: block; }
+.energy-technology .technology-tabs button { pointer-events: auto; font-size: clamp(21px, 2.4vw, 39px); padding: 20px 0; color: #667085; position: relative; }
+.energy-technology .technology-tabs button.is-active { color: #0b1220; }
+.energy-technology .technology-tabs button.is-active::before { content: ''; position: absolute; width: 3px; height: 35%; top: 32%; left: -15px; background: #1268e8; }
+.energy-technology .technology-tab-index { font-size: 10px; }
+.energy-technology .technology-tabs button svg { margin-left: auto; }
+.energy-technology .technology-panel { grid-column: 1 / 6; min-height: 0; background: none; padding: 0; border: 0; position: static; }
+.energy-technology .technology-explanation { margin-top: 25px; padding: 0; width: 100%; max-width: 440px; }
+.energy-technology .technology-explanation { display: block; }
+.energy-technology .technology-explanation p { font-size: 14px; line-height: 1.8; max-width: 380px; }
+.energy-technology .technology-explanation .magnetic-link { pointer-events: auto; font-size: 12px; padding: 16px 0; margin-top: 12px; }
+.energy-technology .exhibition-tags { margin-top: 13px; gap: 8px; }
+.energy-technology .exhibition-canvas { position: absolute; left: 49%; right: 3%; top: 15%; height: 65%; pointer-events: none; }
+.energy-technology .exhibition-stamp { position: absolute; bottom: 6%; left: 53%; right: 5%; display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid #bed3e7; font: 8px 'IBM Plex Mono', monospace; color: #526b84; letter-spacing: .08em; }
+.energy-joint-label { background: #ffffffed; border: 1px solid #cadced; padding: 8px 12px; font: 10px 'IBM Plex Mono', monospace; white-space: nowrap; color: #0a3d91; pointer-events: none; }
+.network-sequence { z-index: 3; overflow: clip; }
+.future-sequence { position: relative; height: 220svh; z-index: 3; pointer-events: none; }
+.future-sequence .final-section { position: sticky; top: 0; height: 100svh; min-height: 0; padding-top: 13vh; padding-bottom: 6vh; display: flex; align-items: center; background: transparent; overflow: hidden; }
+.future-copy { width: 100%; }
+.future-sequence h2 { font-size: clamp(75px, 10.5vw, 175px); letter-spacing: -.075em; line-height: .92; font-weight: 500; margin: 30px 0 25px; max-width: 85%; }
+.future-sequence h2 em { font-family: Georgia, serif; color: #1268e8; font-weight: 400; }
+.future-sequence .final-section p { margin-top: 20px; font-size: 15px; }
+.future-sequence .final-buttons { margin-top: 28px; gap: 36px; }
+.future-sequence .final-buttons a, .future-sequence .final-buttons button { pointer-events: auto; }
+.future-sequence .final-bottom-note { position: absolute; bottom: 4%; left: 7%; margin: 0; }
+.future-coordinate { position: absolute; right: 7%; bottom: 5%; line-height: 2; }
+.footer-descent { height: 50svh; position: relative; z-index: 3; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+.footer-descent span { color: #475467; font-size: 9px; letter-spacing: .18em; }
+.site-footer { position: relative; z-index: 3; background: transparent; }
+.site-footer { min-height: 65svh; display: flex; flex-direction: column; justify-content: space-between; padding-top: 7vh; }
+.site-footer .footer-brand .brand > span { font-size: clamp(42px, 5.6vw, 84px); }
+.site-footer .footer-brand .brand svg { width: 44px; height: 54px; }
+.energy-technology .exhibition-tags { display: flex; flex-wrap: wrap; flex-direction: row; align-items: center; gap: 14px; }
+.site-footer .footer-main, .site-footer .footer-bottom { position: relative; z-index: 1; }
+.site-footer::before { display: none; }
+@media (min-width: 701px) and (max-height: 800px) {
+  .technology-stage { padding-top: 11vh; }
+  .energy-technology .exhibition-heading h2 { font-size: 46px; margin: 18px 0 20px; }
+  .energy-technology .technology-tabs button { padding: 13px 0; }
+  .energy-technology .technology-explanation { margin-top: 15px; }
+  .future-sequence h2 { font-size: 9vw; margin: 20px 0; }
+}
+@media (max-width: 700px) {
+  .understanding-section { height: 285svh; }
+  .understanding-stage { padding-inline: 23px; }
+  .understanding-copy { grid-column: 1 / 13; padding-bottom: 14vh; }
+  .understanding-copy h2 { font-size: clamp(42px, 12.5vw, 78px); letter-spacing: -.062em; line-height: 1.04; }
+  .understanding-copy > .micro-label { font-size: 7px; margin-bottom: 4vh; }
+  .understanding-note { max-width: 80%; padding-top: 8px; left: 23px !important; right: auto !important; top: auto !important; }
+  .understanding-note > span { font-size: 7px; }
+  .understanding-note p { font-size: 11px; margin-top: 5px; }
+  .understanding-note.perception { bottom: 24%; }
+  .understanding-note.reasoning { bottom: 16%; }
+  .understanding-note.adaptation { bottom: 8%; }
+  .understanding-bottom { font-size: 6px; left: 23px; }
+  .energy-technology { height: 370svh; }
+  .technology-stage { padding: 11vh 23px 4vh; }
+  .energy-technology .exhibition-heading { grid-column: 1 / 13; }
+  .energy-technology .exhibition-heading h2 { font-size: 34px; margin: 17px 0 22px; }
+  .energy-technology .exhibition-heading h2 br { display: none; }
+  .energy-technology .exhibition-heading h2 em { margin-left: 7px; }
+  .energy-technology .technology-tabs { grid-column: 1 / 13; }
+  .energy-technology .technology-tabs button { font-size: 21px; padding: 11px 0; }
+  .energy-technology .technology-tab-index { font-size: 8px; }
+  .energy-technology .technology-panel { grid-column: 1 / 13; }
+  .energy-technology .exhibition-canvas { left: 8%; right: 8%; top: 38%; height: 37%; }
+  .energy-technology .technology-explanation { position: absolute; bottom: 8%; left: 23px; right: 23px; width: auto; }
+  .energy-technology .technology-explanation p { font-size: 11px; line-height: 1.6; max-width: 330px; }
+  .energy-technology .exhibition-tags { margin-top: 8px; }
+  .energy-technology .exhibition-tags span { font-size: 6px; }
+  .energy-technology .technology-explanation .magnetic-link { font-size: 11px; padding: 10px 0; margin-top: 6px; }
+  .energy-technology .exhibition-stamp { left: 23px; right: 23px; bottom: 3%; font-size: 5px; padding-top: 10px; }
+  .future-sequence .final-section { padding: 13vh 23px 6vh; }
+  .future-sequence h2 { font-size: 17vw; max-width: 100%; margin-top: 36px; }
+  .future-sequence .final-section p { font-size: 12px; }
+  .future-sequence .final-buttons { margin-top: 28px; gap: 18px; }
+  .future-sequence .final-bottom-note { left: 23px; bottom: 4%; font-size: 6px; }
+  .future-coordinate { display: none; }
+  .footer-descent { height: 65svh; }
+  .footer-descent span { font-size: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .understanding-line > span { transform: none !important; }
+  .understanding-section { height: 180svh; }
+  .energy-technology { height: 300svh; }
+  .future-sequence { height: 150svh; }
+  .footer-descent { height: 30svh; }
+}

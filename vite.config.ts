@@ -1,24 +1,27 @@
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig(({mode}) => {
-  const env = loadEnv(mode, '.', '');
-  return {
-    plugins: [react(), tailwindcss()],
-    define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-    },
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  server: { host: '0.0.0.0' },
+  build: {
+    sourcemap: true,
+    chunkSizeWarningLimit: 1000,
+    rolldownOptions: {
+      preserveEntrySignatures: false,
+      output: {
+        strictExecutionOrder: true,
+        codeSplitting: {
+          includeDependenciesRecursively: false,
+          groups: [
+            { name: 'webgl-engine', test: /node_modules[\\/]three[\\/]/ },
+            { name: 'three-react', test: /node_modules[\\/](@react-three|three-stdlib)[\\/]/ },
+            { name: 'motion', test: /node_modules[\\/](gsap|lenis|framer-motion|motion-dom|motion-utils)[\\/]/ },
+            { name: 'react', test: /node_modules[\\/](react|react-dom|react-reconciler|scheduler)[\\/]/ },
+          ],
+        },
       },
     },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-    },
-  };
-});
+  },
+})
